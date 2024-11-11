@@ -1,5 +1,5 @@
-# Bodegas
-Examen Final bootcamp fullstack python
+<h1 align="center">Bodegas</h1>
+<h2 align="center">Examen Final bootcamp fullstack python</h2>
 
 Página web donde se pueden arrendar bodegas. 
 La funcionalidad es que el usuario no registrado solo puede ver las noticias del índice; 
