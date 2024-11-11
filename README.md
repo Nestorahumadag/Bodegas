@@ -29,13 +29,12 @@ Antes de ejecutar el proyecto, asegúrese de tener instaladas las siguientes her
     Se adjunta el archivo de requerimientos para su instalacion
     - requerimientos.txt
 # Datos de Usuarios
-   Superusuario
+      Superusuario
         Nombre de usuario: admin
         Correo electrónico: admin@admin.cl
         Contraseña: admin
     
-   Usuarios de Prueba
-    ================================
-    Nombre de usuario: Nestor
-    Correo electrónico: ne.ahumada53@gmail.com
-    Contraseña: praxis2024
+      Usuarios de Prueba
+         Nombre de usuario: Nestor
+         Correo electrónico: ne.ahumada53@gmail.com
+         Contraseña: praxis2024
