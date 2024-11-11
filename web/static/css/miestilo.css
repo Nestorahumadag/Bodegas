@@ -1,0 +1,42 @@
+.fa-heart.text-danger {
+    color: #ff0000; /* Rojo brillante */
+}
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex-grow: 1;
+}
+
+.card-footer {
+    margin-top: auto;
+}
+
+.card-img-top {
+    height: 300px; /* O cualquier altura consistente que funcione con tu diseño */
+    object-fit: cover;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+    margin-bottom: auto;
+}
+
+footer {
+    flex-shrink: 0;
+}

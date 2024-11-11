@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Cotización de Bodegas</h1>
+    {% if carrito %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tipo de Bodega</th>
+                    <th>Metros Cuadrados</th>
+                    <th>Precio Mensual</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in carrito %}
+                <tr>
+                    <td>{{ item.tipo }}</td>
+                    <td>{{ item.metros_cuadrados }} m²</td>
+                    <td>{{ item.precio_mensual }} CLP</td>
+                    <td>
+                        <form method="post" action="{% url 'eliminar_bodega' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="bodega_uuid" value="{{ item.uuid }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-right">
+            <h4>Total Mensual: {{ total_precio }} CLP</h4>
+        </div>
+        <a href="{% url 'cotizar' %}" class="btn btn-primary">Agregar más Bodegas</a>
+    {% else %}
+        <p>No hay bodegas en tu cotización.</p>
+        <a href="{% url 'cotizar' %}" class="btn btn-primary">Volver a Cotizar</a>
+    {% endif %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Cotizar Bodegas</h1>
+    <div class="row">
+        <!-- Columna Izquierda: Seleccionar Tipo de Bodega -->
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-4 mt-5">
+            <h3>Selecciona un Tipo de Bodega</h3>
+            <form method="post" action="{% url 'agregar_bodega' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="tipo_bodega">Tipo de Bodega:</label>
+                    <select name="tipo_bodega" id="tipo_bodega" class="form-control">
+                        {% for tipo in tipos_bodega %}
+                        <option value="{{ tipo.id }}">{{ tipo }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Agregar</button>
+            </form>
+        </div>
+
+        <!-- Columna Derecha: Bodegas Disponibles -->
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-4 mt-5">
+          <h3>Bodegas Disponibles</h3>
+          <p>Bodegas disponibles:</p>
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Tipo de Bodega</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for tipo in tipos_bodega %}
+                  <tr>
+                      <td>{{ tipo }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+    </div>
+</div>
+{% endblock %}

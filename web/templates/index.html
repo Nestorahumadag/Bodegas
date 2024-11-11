@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Noticias de interés</h1>
+    <div class="row">
+        {% for item in noticias_con_likes %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4 mt-5">
+            <div class="card h-100 d-flex flex-column">
+                {% if item.noticia.image %}
+                <img src="{{ item.noticia.image.url }}" class="card-img-top img-fluid" alt="{{ item.noticia.titulo }}">
+                {% endif %}
+                <div class="card-body flex-grow-1">
+                    <h5 class="card-title">
+                        <a href="{% url 'noticia_detail' item.noticia.id %}">{{ item.noticia.titulo }}</a>
+                    </h5>
+                    <p class="card-text">{{ item.noticia.contenido|truncatewords:20 }}</p>
+                </div>
+                <div class="card-footer">
+                    <p class="card-text"><small class="text-muted">Publicado el
+                            {{ item.noticia.fecha_publicacion }}</small></p>
+                    <form method="post" action="{% url 'like' %}" class="d-flex align-items-center gap-1">
+                        {% csrf_token %}
+                        <input type="hidden" name="noticia_id" value="{{ item.noticia.id }}">
+                        <input type="hidden" name="next" value="index">
+                        <span>{{ item.noticia.likes.count }}</span>
+                        <button type="submit" class="btn btn-light p-0">
+                            <i class="fa-heart {% if item.ha_dado_like %}fas text-danger{% else %}far{% endif %}"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
